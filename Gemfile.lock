@@ -1,12 +1,16 @@
+PATH
+  remote: ../rulers
+  specs:
+    rulers (0.0.2)
+      rack
+
 GEM
   remote: http://rubygems.org/
   specs:
     rack (1.4.1)
-    rulers (0.0.2)
-      rack
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  rulers
+  rulers!
