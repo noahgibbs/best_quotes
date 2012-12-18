@@ -5,8 +5,10 @@ class MyTable < Rulers::Model::SQLite; end
 STDERR.puts MyTable.schema.inspect
 
 # Create row
-mt = MyTable.create "title" => "It happened!",
-  "posted" => 1, "body" => "It did!"
-mt = MyTable.create "title" => "I saw it!"
+mt = MyTable.create "title" => "I saw it again!"
+mt["title"] = "I really did!"
+mt.save!
 
-puts "Count: #{MyTable.count}"
+mt2 = MyTable.find mt["id"]
+
+puts "Title: #{mt2["title"]}"
