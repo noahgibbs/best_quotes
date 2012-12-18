@@ -13,6 +13,12 @@ class QuotesController < Rulers::Controller
     render :index, :quotes => quotes
   end
 
+  def show
+    quote = FileModel.find(params["id"])
+    ua = request.user_agent
+    render :quote, :obj => quote, :ua => ua
+  end
+
   def new_quote
     attrs = {
       "submitter" => "web user",
@@ -21,5 +27,11 @@ class QuotesController < Rulers::Controller
     }
     m = FileModel.create attrs
     render :quote, :obj => m
+  end
+
+  def post_test
+    raise "NOT A POST!" unless env["REQUEST_METHOD"] == "POST"
+
+    "Params: #{request.params.inspect}"
   end
 end
